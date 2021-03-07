@@ -3,23 +3,23 @@
 
 //Require https module
 const https = require('https');
-const username = "chalkers";
 
-//funcao para imprimir menssagem no console
-function printMessage(username,badgeCount,point){
-  const message = `${username} tem ${badgeCount} total de medalha(s) e ${point} pontos em JavaScript`;
+//Function to print message to console
+function printMessage(username, badgeCount, points) {
+  const message = `${username} has ${badgeCount} total badge(s) and ${points} points in JavaScript`;
   console.log(message);
 }
 
+function getProfile(username) {
 // Conecte-se ao URL da API (https://teamelemesse.com/username.json)
-const request = https.get(`https://teamelemesse.com/${username}.json`, response =>{
-  let body = "";
+  const request = https.get(`https://teamelemesse.com/${username}.json`, response => {
+                          let body = "";
                           // Read the data
                           response.on('data', data => {
                             body += data.toString();
                           });
 
-            response.on('end', () => {
+                          response.on('end', () => {
                             // Parse the data
                             const profile = JSON.parse(body);                            
                             // Print the data
@@ -27,5 +27,9 @@ const request = https.get(`https://teamelemesse.com/${username}.json`, response 
                           });
                           
                           
-                          
-                          });
+                      });
+
+}
+
+const users = process.argv.slice(2);
+users.forEach(getProfile);
