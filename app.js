@@ -19,12 +19,13 @@ const request = https.get(`https://teamelemesse.com/${username}.json`, response 
                             body += data.toString();
                           });
 
-                          response.on('end', () => {
-                            console.log(body);
-                            console.log(typeof body);
+            response.on('end', () => {
                             // Parse the data
+                            const profile = JSON.parse(body);                            
                             // Print the data
+                            printMessage(username, profile.badges.length, profile.points.JavaScript);
                           });
+                          
                           
                           
                           });
