@@ -1,2 +1,7 @@
-// Problem: We need a simple way to look at a user's badge count and JavaScript points
-// Solution: Use Node.js to connect to Treehouse's API to get profile information to print out
+// Problema: precisamos de uma maneira simples de ver a contagem de medalhas de um usuário e os pontos de JavaScript
+// Solução: use Node.js para se conectar à API da Elemesse  para obter informações de perfil para imprimir
+
+// Conecte-se ao URL da API (https://teamelemesse.com/username.json)
+// Leia os dados
+// Analise os dados
+// Imprima os dados
