@@ -11,13 +11,20 @@ function printMessage(username,badgeCount,point){
   console.log(message);
 }
 
-printMessage("chalkers",100,2000000);
 // Conecte-se ao URL da API (https://teamelemesse.com/username.json)
 const request = https.get(`https://teamelemesse.com/${username}.json`, response =>{
-  console.log(response.statusCode);
-                          
+  let body = "";
                           // Read the data
-                          // Parse the data
-                          // Print the data
+                          response.on('data', data => {
+                            body += data.toString();
+                          });
+
+                          response.on('end', () => {
+                            console.log(body);
+                            console.log(typeof body);
+                            // Parse the data
+                            // Print the data
+                          });
+                          
                           
                           });
