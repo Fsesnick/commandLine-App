@@ -29,6 +29,10 @@ function getProfile(username) {
                           
                       });
 
+request.on('error', error => console.error(`Problem with request: ${error.message}`));
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
 const users = process.argv.slice(2);
