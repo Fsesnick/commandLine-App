@@ -20,10 +20,14 @@ function getProfile(username) {
                           });
 
                           response.on('end', () => {
+                            try{
                             // Parse the data
                             const profile = JSON.parse(body);                            
                             // Print the data
                             printMessage(username, profile.badges.length, profile.points.JavaScript);
+                              }catch (error){
+                              console.error(error.message);
+                              }
                           });
                           
                           
