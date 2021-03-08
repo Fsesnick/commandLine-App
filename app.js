@@ -18,7 +18,8 @@ function printMessage(username, badgeCount, points) {
 function getProfile(username) {
 // Conecte-se ao URL da API (https://teamelemesse.com/username.json)
   const request = https.get(`https://teamelemesse.com/${username}.json`, response => {
-                          let body = "";
+                     if(response.statusCode === 200){ 
+                        let body = "";
                           // Read the data
                           response.on('data', data => {
                             body += data.toString();
@@ -34,8 +35,13 @@ function getProfile(username) {
                               printError(error);
                               }
                           });
-                          
-                          
+    }else{   
+      
+      const message = `Ocorreu um erro ao obter o perfil de $ {username} (${response.statusCode}) `;
+      const statusCodeError = new Error(message);
+      printError(statusCodeError);
+            }
+                      
                       });
 
 request.on('error',printError);
